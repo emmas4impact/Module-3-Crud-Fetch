@@ -89,8 +89,11 @@
       <h2 class="mt-5">
         Current products 
       </h2>
-      <div id="eventsDiv">
+      <div id="eventsDiv" class='row'>
         <!-- empty at load -->
+        <div class="col col-md-3" id='products'>
+        
+        </div>
       </div>
     </div>
     <script src="fetchfile.js"></script>
@@ -101,11 +104,20 @@
 
         if (events.length > 0) {
           events.forEach((e) => {
-            let event = document.createElement("div");
-            event.innerHTML = `<span>${e.name}: ${e.description} : ${e.brand}: ${e.price}</span>
+            let eventsCol = document.querySelector('#products')
+           // let event = document.createElement("div");
+           /*  event.innerHTML = `<span>${e.name}: ${e.description} : ${e.brand}: ${e.price}</span>
                                 <p><img src="${e.imageUrl}"  width="80" height="80"></p>`;
-           // event.innerHTML=`<p><img src="${e.imageUrl}"  width="30" height="50"></p>`
-            eventsDiv.appendChild(event)
+           // event.innerHTML=`<p><img src="${e.imageUrl}"  width="30" height="50"></p>` */
+           eventsCol.innerHTML+=`<div class="card " style="width: 18rem; display: flex">
+                          <img src="${e.imageUrl}" class="card-img-top" alt="...">
+                          <div class="card-body">
+                            <h5 class="card-title">Product Name: ${e.name}</h5>
+                            <p class="card-text">Description: ${e.description}</p>
+                            <a href="#" class="btn btn-primary">${e.price}€</a>
+                          </div>
+                        </div>`
+            //eventsDiv.appendChild(eventsCol)
           });
          
         } else {
