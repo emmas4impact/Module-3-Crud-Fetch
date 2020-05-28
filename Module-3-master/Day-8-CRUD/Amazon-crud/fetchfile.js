@@ -12,7 +12,7 @@ getProducts = async () =>{
         method :'GET', 
         headers: headers,
     });
-    return await response.json()   //this is returning the reuslt of the promise in an usable way
+    return await response.json();   //this is returning the reuslt of the promise in an usable way
 }
 
 getProduct = async (id) =>{
@@ -20,7 +20,7 @@ getProduct = async (id) =>{
         method :'GET', 
         headers: headers,
     });
-    return await response.json()   //this is returning the reuslt of the promise in an usable way
+    return await response.json();   //this is returning the reuslt of the promise in an usable way
 }
 
 
@@ -30,7 +30,7 @@ saveProducts = async (productEvent) => {
         body: JSON.stringify(productEvent), //convert over agendaEvent to string
         headers: headers,
     });
-    console.log(response)
+    console.log(response);
     return response;
 };
 
@@ -47,7 +47,7 @@ editProduct = async (id, productEvent) => {
 deleteProducts = async (id) => {
     let response = await fetch(url + id ,{
         method :'DELETE', //use to delete request
-        headers: headers,
+         headers: headers,
     });
     return response;
 };

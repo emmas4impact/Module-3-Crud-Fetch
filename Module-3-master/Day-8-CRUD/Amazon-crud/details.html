@@ -45,8 +45,12 @@
       </div>
     </nav>
     <div class="container text-center">
-      <h1>STRIVE CRUD AGENDA</h1>
-      <h2>Event details</h2>
+      <h1>STRIVE CRUD PRODUCTS</h1>
+      <h2>Product details</h2>
+      <ul class="list-unstyled">
+        
+        
+    </ul>
       <div class="my-5" id="details">
         <!-- EMPTY AT LOAD -->
       </div>
@@ -74,17 +78,18 @@
         console.log("ID OF THE Products IS", id);
         let event = await getProduct(id);
         console.log("Products DETAILS", event);
-        let detailsDiv = document.querySelector("#details");
-        detailsDiv.innerHTML = `<div class="card">
-                            <img src="${event.imageUrl}" alt="Jane" style="width:100%">
-                            <div class="container">
-                                <h2>${event.name}</h2>
-                                <p class="title">${event.brand}</p>
-                                <p>${event.description}</p>
-                                <p>${event.price}</p>
-                                <p><button class="button">Buy Now</button></p>
-                            </div>
-                            </div>`;
+        let detailsDiv = document.querySelector(".list-unstyled");
+        
+        detailsDiv.innerHTML += `<li class="media" >
+            <img src="${event.imageUrl}" class="mr-3" alt="..." style="width: 18rem;">
+          <div class="media-body">
+             <h4 class="mt-0 mb-3">${event.name}</h4>
+            <p class="mt-0 mb-3">${event.description}</p>
+            <p class="mt-0 mb-3">Brand: ${event.brand}</p>
+            <h5 class="mt-0 mb-3">Price: ${event.price}€</h5> 
+            <p><button class="button">Buy Now</button></p>
+          </div>
+        </li> <hr>`;
       };
 
       const handleDelete = async () => {

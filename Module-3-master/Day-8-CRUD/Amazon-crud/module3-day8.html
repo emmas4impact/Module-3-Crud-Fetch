@@ -104,34 +104,42 @@
       <h2 class="mt-5">
         Current products 
       </h2>
-      <div id="eventsDiv" class='row'>
-        <!-- empty at load -->
-        <div class="col-12 col-md-4 mb-3" id='products'>
+      <ul class="list-unstyled">
+         <!-- empty at load -->
         
-        </div>
-      </div>
+      </ul>
+      <a href="javascript:prevPage()" id="btn_prev">Prev</a>
+      <a href="javascript:nextPage()" id="btn_next">Next</a>
+      page: <span id="page"></span>
     </div>
     <script src="fetchfile.js"></script>
     <script>
+      let current_page = 1;
+      let records_per_page = 4;
+      let jsonObj =[];
+      const eventsCol = document.querySelector('.list-unstyled')
+           
       window.onload = async () => {
+        
         let eventsDiv = document.querySelector("#eventsDiv");
         
-        
-        try {
+        changePage(1)
+       /*  try {
+          changePage(1)
           let events = await getProducts();
-          
+          let eventsCol = document.querySelector('.list-unstyled')
           if (events.length > 0) {
           events.forEach((e) => {
-            let eventsCol = document.querySelector('#products')
-           
-           eventsCol.innerHTML+=`<div class="card " style="width: 18rem; display: flex">
-                          <img src="${e.imageUrl}" class="card-img-top" alt="...">
-                          <div class="card-body">
-                            <a href="details.html?id=${e._id}"><h5 class="card-title">Product Name: ${e.name}</h5></a>
-                            <p class="card-text">Description: ${e.description}</p>
-                            <a href="#" class="btn btn-primary">${e.price}€</a>
-                          </div>
-                        </div>`
+            
+           eventsCol.innerHTML+=`<li class="media" >
+            <a href="details.html?id=${e._id}"><img src="${e.imageUrl}" class="mr-3" alt="..." style="width: 18rem;"> </a>
+          <div class="media-body">
+            <a href="details.html?id=${e._id}"> <h4 class="mt-0 mb-3">${e.name}</h4></a>
+            <p class="mt-0 mb-3">${e.description}</p>
+            <p class="mt-0 mb-3">Brand: ${e.brand}</p>
+            <h5 class="mt-0 mb-3">Price: ${e.price}€</h5> .
+          </div>
+        </li> <hr>`
             //eventsDiv.appendChild(eventsCol)
           });
          
@@ -143,10 +151,95 @@
           console.log("err", error)
           alert(error)
           
-        }
+        } */
 
         
       };
+      function prevPage(){
+        if (current_page > 1) {
+            current_page--;
+            changePage(current_page);
+        }
+      }
+    function nextPage(){
+        if (current_page < numPages()) {
+            current_page++;
+            changePage(current_page);
+        }
+    }
+   async function changePage(page){
+    let btn_next = document.querySelector("#btn_next");
+    let btn_prev = document.querySelector("#btn_prev");
+    let listing_table = document.querySelector('.list-unstyled');
+    let page_span = document.querySelector("#page");
+ 
+    // Validate page
+    if (page < 1) page = 1;
+    if (page > numPages()) page = numPages();
+    
+    try {
+         
+          let events = await getProducts();
+          //let eventsCol = document.querySelector('.list-unstyled')
+          if (events.length > 0) {
+          events.forEach((e) => {
+            //e=(page-1) * records_per_page ? : (page * records_per_page); 
+           eventsCol.innerHTML+=`<li class="media" >
+            <a href="details.html?id=${e._id}"><img src="${e.imageUrl}" class="mr-3" alt="..." style="width: 18rem;"> </a>
+          <div class="media-body">
+            <a href="details.html?id=${e._id}"> <h4 class="mt-0 mb-3">${e.name}</h4></a>
+            <p class="mt-0 mb-3">${e.description}</p>
+            <p class="mt-0 mb-3">Brand: ${e.brand}</p>
+            <h5 class="mt-0 mb-3">Price: ${e.price}€</h5> .
+          </div>
+        </li> <hr>`
+            //eventsDiv.appendChild(eventsCol)
+           
+          });
+         
+        } else {
+          eventsDiv.innerHTML = "<h1>No planned events yet</h1>";
+        }
+          
+        } catch (error) {
+          console.log("err", error)
+          alert(error)
+          
+        }
+        
+    /* listing_table.innerHTML = "";
+
+        for (let i = (page-1) * records_per_page; i < (page * records_per_page); i++) {
+            listing_table.innerHTML += `<li class="media" >
+            <a href="details.html?id=${i._id}"><img src="${i.imageUrl}" class="mr-3" alt="..." style="width: 18rem;"> </a>
+          <div class="media-body">
+            <a href="details.html?id=${i._id}"> <h4 class="mt-0 mb-3">${i.name}</h4></a>
+            <p class="mt-0 mb-3">${i.description}</p>
+            <p class="mt-0 mb-3">Brand: ${i.brand}</p>
+            <h5 class="mt-0 mb-3">Price: ${i.price}€</h5> .
+          </div>
+        </li> <hr>`
+        } */
+        page_span.innerHTML = page;
+
+        if (page == 1) {
+            btn_prev.style.visibility = "hidden";
+        } else {
+            btn_prev.style.visibility = "visible";
+        }
+
+        if (page == numPages()) {
+            btn_next.style.visibility = "hidden";
+        } else {
+            btn_next.style.visibility = "visible";
+        }
+    }
+
+function numPages()
+{
+    return Math.ceil(eventsCol.length / records_per_page);
+}
+
     </script>
 
     <!-- Optional JavaScript -->
