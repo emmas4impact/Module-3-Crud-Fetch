@@ -68,7 +68,49 @@
       integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
       crossorigin="anonymous"
     />
-
+     <style>
+       .title-wrapper {
+          margin-bottom: 0.5rem;
+        }
+       .zoom {
+  
+          object-fit: cover;
+          transition: transform .2s;
+          
+ 
+      }
+      .mr-3:hover{
+        z-index: 2;
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.2); 
+      }
+      .zoom:hover {
+  
+        z-index: 2;
+        -ms-transform: scale(1.5); /* IE 9 */
+        -webkit-transform: scale(1.5); /* Safari 3-8 */
+        transform: scale(1.2); 
+      }
+      .col-md-3{
+    display: inline-block;
+    margin-left:-4px;
+  }
+  .col-md-3 img{
+    width:100%;
+    height:auto;
+  }
+  body .carousel-indicators li{
+    background-color: white;
+  }
+  body .carousel-indicators{
+    bottom: 0;
+  }
+  body .carousel-control-prev-icon,
+  body .carousel-control-next-icon{
+    background-color:white;
+  }
+     </style>   
     <title> Amazon CRUD PRODUCTS</title>
   </head>
   <body>
@@ -99,6 +141,77 @@
         </ul>
       </div>
     </nav>
+    <div class="container">
+      <div class="title-wrapper">
+        <h3>Trending Products</h3>
+       
+      </div>
+      <div id="demo" class="carousel slide" data-ride="carousel">
+        
+  
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+          <li data-target="#demo" data-slide-to="0" class="active"></li>
+          <li data-target="#demo" data-slide-to="1"></li>
+          <li data-target="#demo" data-slide-to="2"></li>
+        </ul>
+        
+        <!-- The slideshow -->
+        <div class="container carousel-inner no-padding">
+          <div class="carousel-item active">
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://www.gizmochina.com/wp-content/uploads/2019/01/Samsung-Galaxy-S10-Exynos.jpg">
+            </div>    
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://cdn3.volusion.com/fvskm.dxyrs/v/vspfiles/photos/JP_E7270-2.jpg">
+            </div>   
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://www.notebookcheck.net/uploads/tx_nbc2/latitude-display_01.png">
+            </div>   
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://www.notebookcheck.net/typo3temp/_processed_/b/f/csm_Microsoft-Surface-Pro-Silver_3c7baceddb.jpg">
+            </div>   
+          </div>
+          <div class="carousel-item">
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://www.notebookcheck.net/fileadmin/Notebooks/News/_nc3/RE2wVvp.jpg">
+            </div>    
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://dustinweb.azureedge.net/image/540128/400/320/microsoft-surface-pro-6-demo-123-platina.jpg">
+            </div>   
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://i.pcmag.com/imagery/reviews/02z7CXr7oYqrcleufNp2rfb-30..v_1573180988.jpg">
+            </div>   
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSvboMPqI4hL2P3jF6ZCP2IsL7hAMXIQ_kiVrM66HjGqSUkH21y&usqp=CAU">
+            </div>  
+          </div>
+          <div class="carousel-item">
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://images-na.ssl-images-amazon.com/images/I/71HaIH7W5gL._AC_SL1322_.jpg">
+            </div>    
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://media.power-cdn.net/images/h-c45950760e29f3d512b057ac8f1d1e17/products/1023746/1023746_2_1200x1200_w_g.jpg">
+            </div>   
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://cdn.cnetcontent.com/55/19/55193b98-631e-42ab-ae5a-2298efe159b8.jpg">
+            </div>   
+            <div class="col-xs-3 col-sm-3 col-md-3 zoom">
+              <img src="https://www.gigantti.fi/content/cnm/155421/Sale/Samsung_FI_S20_Launch_1260x600.jpg">
+            </div>  
+          </div>
+        </div>
+        
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a>
+      </div>
+    
+    </div>
     <div class="container text-center">
       <h1>Amazon CRUD PRODUCTS</h1>
       <h2 class="mt-5">
