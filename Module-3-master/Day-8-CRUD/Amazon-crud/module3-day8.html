@@ -138,13 +138,16 @@
         -webkit-transform: scale(1.5); /* Safari 3-8 */
         transform: scale(1.2); 
       }
-      .col-md-3{
+  .col-md-3{
     display: inline-block;
     margin-left:-4px;
   }
   .col-md-3 img{
     width:100%;
     height:auto;
+  }
+  .fas{
+    color:white;
   }
   body .carousel-indicators li{
     background-color: white;
@@ -156,6 +159,20 @@
   body .carousel-control-next-icon{
     background-color:white;
   }
+  .navbar{
+    z-index: 2;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hidden;
+  }
+  .trendi{
+    padding-top: 5rem;
+  }
+  .carousel{
+    z-index: 0.5;
+  }
+  
      </style>   
     <title> Amazon CRUD PRODUCTS</title>
   </head>
@@ -186,8 +203,12 @@
           </li>
         </ul>
       </div>
+      <div>
+        <i class="fas fa-cart-plus"><span class="badge badge-light ml-1"> 0</span></i>
+      
+      </div>
     </nav>
-    <div class="container">
+    <div class="container trendi">
       <div class="title-wrapper">
         <h3>Trending Products</h3>
        
@@ -282,9 +303,9 @@
       const prev=document.querySelector(".prev");
       const next=document.querySelector(".next");
       const page=document.querySelector(".page-num");
-      const maxItem=6;
+      const maxItem=12;
       let index=1;
-      const pagination=Math.ceil(eventsCol.length/maxItem);
+      const pagination=Math.ceil(eventsCol.length/maxItem); //pagination is 0
       console.log(pagination)
  
            
@@ -306,11 +327,25 @@
             <a href="details.html?id=${e._id}"> <h4 class="mt-0 mb-3">${e.name}</h4></a>
             <p class="mt-0 mb-3">${e.description}</p>
             <p class="mt-0 mb-3">Brand: ${e.brand}</p>
-            <h5 class="mt-0 mb-3">Price: ${e.price}€</h5> .
+            <h5 class="mt-0 mb-3">Price: ${e.price}€</h5> 
+            <p><button class="btn btn-dark addorder">Buy Now</button></p>
           </div>
         </li> <hr>`
             //eventsDiv.appendChild(eventsCol)
           });
+          
+          let addOrder = document.querySelectorAll('.addorder')
+          for (let i = 0; i < addOrder.length; i++) {
+            const element = addOrder[i];
+            
+            element.addEventListener('click', function() {
+            console.log("order added");
+            let badge = document.querySelector('.badge ')
+          
+            badge.textContent = (Number(badge.textContent.split(' ')[0])) + 1;
+          })
+          }
+          
          
         } else {
           eventsDiv.innerHTML = "<h1>No planned events yet</h1>";
@@ -338,7 +373,7 @@
   })
 
   function check(){
-  	 if(index==pagination){
+  	 if(index==pagination){ //11
   	 	next.classList.add("disabled");
   	 }
   	 else{
@@ -355,6 +390,7 @@
 
   function showItems() {
   	 for(let i=0;i<eventsCol.length; i++){
+      //console.log(eventsCol[i])
   	 	eventsCol[i].classList.remove("show");
   	 	eventsCol[i].classList.add("hide");
 
@@ -377,6 +413,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://kit.fontawesome.com/ddd26a46d6.js" crossorigin="anonymous"></script>
     <script
       src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
