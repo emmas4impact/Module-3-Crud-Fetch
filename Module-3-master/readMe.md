@@ -1,5 +1,5 @@
-### The purpose of this project is to build a NetFlix Clone Website
-## In this Project We have built a Device st
+### The purpose of this project is to build a Accessory store using fetch api Implementing CRUD
+## In this Project I have built a Accessory store
 ## Index html [Live Demo](https://rawcdn.githack.com/emmas4impact/Module-3-Crud-Fetch/ecd2b19c903aa3e1129b2318be8e4494db22f068/Module-3-master/Day-8-CRUD/Amazon-crud/module3-day8.html)
 
 ## Built With
