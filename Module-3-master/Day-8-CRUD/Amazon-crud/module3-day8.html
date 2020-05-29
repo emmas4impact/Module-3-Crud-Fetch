@@ -390,14 +390,13 @@
 
   function showItems() {
   	 for(let i=0;i<eventsCol.length; i++){
-      //console.log(eventsCol[i])
+      
   	 	eventsCol[i].classList.remove("show");
   	 	eventsCol[i].classList.add("hide");
 
 
   	    if(i>=(index*maxItem)-maxItem && i<index*maxItem){
-  	 	  // if i greater than and equal to (index*maxItem)-maxItem;
-  		  // means  (1*8)-8=0 if index=2 then (2*8)-8=8
+  	 	
           eventsCol[i].classList.remove("hide");
           eventsCol[i].classList.add("show");
   	    }
